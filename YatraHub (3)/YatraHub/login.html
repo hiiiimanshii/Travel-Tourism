@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css" />
+    <script src="login.js"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" required />
+        </div>
+        <div class="button-container">
+          <button type="submit">Login</button>
+        </div>
+        <div class="button-container">
+          <button class="register-btn">
+            <a href="regestration.html">Not registered yet</a>
+          </button>
+        </div>
+      </form>
+      <p id="error-msg" style="color: red"></p>
+    </div>
+    <script>
+      // Simulated user data for login
+      const user = {
+        username: "admin",
+        password: "admin123",
+      };
+
+      // Function to handle login process
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent traditional form submission
+
+          const enteredUsername = document.getElementById("username").value;
+          const enteredPassword = document.getElementById("password").value;
+
+          // Check if entered credentials match the simulated user data
+          if (
+            enteredUsername === user.username &&
+            enteredPassword === user.password
+          ) {
+            alert("Login successful!");
+            // Set login status in localStorage
+            localStorage.setItem("isLoggedIn", "true");
+            // Redirect to index.html
+            window.location.href = "index.html";
+          } else {
+            // Show error message
+            document.getElementById("error-msg").textContent =
+              "Invalid username or password";
+          }
+        });
+    </script>
+  </body>
+</html>
